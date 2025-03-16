@@ -1,0 +1,137 @@
+{ config, pkgs, user, nixvim, stylix, system, ... } :
+{
+  home.username = user;
+  home.homeDirectory = "/home/${user}";
+  home.stateVersion = "24.11";
+
+  imports = [
+    ./modules
+  ];
+
+  # Packages that should be installed to the user profile
+  home.packages = with pkgs; [
+    # Dev tools
+    vim                  # Text editor
+    wget                 # Network downloader
+    curl                 # Command line tool for transferring data
+    gh                   # GitHub CLI
+    jq                   # JSON processor
+    yq                   # YAML processor
+    httpie               # HTTP client
+    delta                # Git diff viewer
+    lazygit              # Terminal-based git UI
+    alejandra            # Nix formatter
+    home-manager         # NixOS user configuration manager
+    nil                  # Nix LSP (Language Server Protocol)
+    just                 # Command runner (like make but simpler)
+    difftastic           # Better diff tool
+    shellcheck           # Shell script analyzer
+    nodePackages.prettier # Code formatter
+    (nerdfonts.override { fonts = [ "FiraCode" "JetBrainsMono" "NerdFontsSymbolsOnly" "Noto" ]; })  # Nerd Fonts
+
+    # System tools
+    btop                 # System monitoring
+    ripgrep              # Search tool (like grep but faster)
+    fd                   # Fast file search tool
+    tree                 # Display directory structure
+    duf                  # Disk usage visualizer
+    ncdu                 # Disk usage analyzer
+    bottom               # Terminal system monitor
+    du-dust              # Disk usage tool
+    procs                # Process viewer
+    sd                   # Text replacement tool
+    choose               # Select options from list
+
+    # Shell tools
+    fzf                  # Fuzzy finder
+    bat                  # Cat with syntax highlighting
+    eza                  # Modern ls command
+    zoxide               # Smart directory navigator
+
+    # Utils
+    tldr                 # Simplified man pages
+    neofetch             # System information tool
+    p7zip                # Compression tool
+    unzip                # Zip archive extractor
+    zip                  # Zip archive compressor
+
+    # Python development tools
+    uv                   # Python async web server
+    ruff                 # Python linter
+    nh                   # Python script runner
+    vivid                # Python color output
+
+    # Add these useful tools
+    comma                # Run programs without installing them
+    nix-output-monitor   # Better nix-build output
+    nixpkgs-review       # Review nixpkgs pull requests
+    statix               # Lint and suggest improvements for Nix code
+
+    # Optional but recommended
+    devenv               # Development environments
+    direnv               # Per-directory environment variables
+
+    # Add these packages for ephemeral package support
+    nix-index            # Required for , (comma) to work
+    comma                # Run programs without installing
+
+    # Add nixvim
+    nixvim.packages.${system}.default  # Nix-based Vim setup
+  ];
+
+  # Git configuration
+  programs.git = {
+    enable = true;
+    userName = "albedosehen";  # TODO: Change this
+    userEmail = "shonpt@outlook.com";  # TODO: Change this
+    delta.enable = true;
+    lfs.enable = true;
+    extraConfig = {
+      init.defaultBranch = "main";
+      pull.rebase = false;
+      push.autoSetupRemote = true;
+      core.autocrlf = "input"; # For WSL
+      diff.colorMoved = "default";
+      merge.conflictStyle = "diff3";
+      rebase.autoStash = true;
+    };
+    aliases = {
+      st = "status";
+      co = "checkout";
+      sw = "switch";
+      br = "branch";
+      ci = "commit";
+      pu = "push";
+      pl = "pull";
+      fe = "fetch --all";
+      fep = "fetch --all --prune --tags"; # Fetch all branches and tags
+      fepu = "fetch --all --prune --tags --update-shallow"; # Fetch all branches, tags, and update shallow clones
+      lg = "log --oneline --graph --decorate --all";
+      lga = "log --oneline --graph --decorate --all --abbrev-commit --color-words";
+      lga1 = "log --oneline --graph --decorate --all --abbrev-commit --color-words --max-count=1";
+      lga3 = "log --oneline --graph --decorate --all --abbrev-commit --color-words --max-count=3";
+      lga5 = "log --oneline --graph --decorate --all --abbrev-commit --color-words --max-count=5";
+      lga10 = "log --oneline --graph --decorate --all --abbrev-commit --color-words --max-count=10";
+
+      unstage = "reset HEAD --";
+      last = "log -1 HEAD";
+      visual = "!gitk";
+    };
+  };
+
+  # Add this section for better XDG compliance
+  xdg = {
+    enable = true;
+    configHome = "${config.home.homeDirectory}/.config";
+    cacheHome = "${config.home.homeDirectory}/.cache";
+    dataHome = "${config.home.homeDirectory}/.local/share";
+    stateHome = "${config.home.homeDirectory}/.local/state";
+  };
+
+  # Add nix-index configuration
+  programs.nix-index = {
+    enable = true;
+    enableZshIntegration = true;
+    #enableFishIntegration = true;
+  };
+}
