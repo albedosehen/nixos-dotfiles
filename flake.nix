@@ -73,7 +73,6 @@
         modules = [
           nixos-wsl.nixosModules.default
           ./configuration.nix
-          #./configuration
           home-manager.nixosModules.home-manager
           {
             home-manager.extraSpecialArgs = {
