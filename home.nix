@@ -98,6 +98,17 @@
     userEmail = "shonpt@outlook.com"; # TODO: Change this
     delta.enable = true;
     lfs.enable = true;
+
+    includes = [
+      {
+        condition = "gitdir:~/paradigm/";
+        contents = {
+          user.name = "Shon Thomas";
+          user.email = "shon.thomas@myparadigm.com";
+        };
+      }
+    ];
+
     extraConfig = {
       init.defaultBranch = "main";
       pull.rebase = false;
@@ -107,6 +118,7 @@
       merge.conflictStyle = "diff3";
       rebase.autoStash = true;
     };
+
     aliases = {
       st = "status";
       co = "checkout";
