@@ -134,7 +134,15 @@
   programs.gh = {
     enable = true;
     settings = {
-      git_protocol = "ssh";
+      version = 1;
+      git_protocol = "https";
+      editor = "nvim";
+      prompt = "enabled";
+      prefer_editor_prompt = "disabled";
+      pager = "bat"; # Leave blank or set "cat" to disable
+      aliases = {
+        co = "pr checkout";
+      };
     };
   };
 
