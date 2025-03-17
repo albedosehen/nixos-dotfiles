@@ -88,7 +88,7 @@ in
     direnv # Per-directory environment variables
 
     # Add these packages for ephemeral package support
-    nix-index # Required for , (comma) to work
+    #nix-index # Required for , (comma) to work
     comma # Run programs without installing
 
     # Add nixvim

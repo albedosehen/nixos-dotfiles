@@ -49,9 +49,9 @@
             export EZA_ICON_TYPE="nerd"
 
             # Better integration with Nix
-            if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
-                . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
-            fi
+            #if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
+            #    . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
+            #fi
 
             # Add SSH agent socket configuration
             export SSH_AUTH_SOCK="/mnt/wsl/ssh-agent.sock"
@@ -78,10 +78,10 @@
             }
 
             # Initialize nix-index database if it doesn't exist
-            if [ ! -f ~/.cache/nix-index/files ]; then
-                echo "Initializing nix-index database..."
-                nix-index
-            fi
+            #if [ ! -f ~/.cache/nix-index/files ]; then
+            #    echo "Initializing nix-index database..."
+            #    nix-index
+            #fi
 
             # Define ,, and ,s as functions for better argument handling
             function ,,() {
