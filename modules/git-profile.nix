@@ -18,15 +18,15 @@ in
   '';
 
   # Ensure correct file permissions for SSH keys
-  home.file.".ssh/id_ed25519_git" = {
-    source = null; # no need to embed content directly
-    mode = "0600"; # Correct permissions for private key
-  };
+  #home.file.".ssh/id_ed25519_git" = {
+  #source = null; # no need to embed content directly
+  #mode = "0600"; # Correct permissions for private key
+  #};
 
-  home.file.".ssh/id_rsa_paradigm" = {
-    source = null; # no need to embed content directly
-    mode = "0600"; # Correct permissions for private key
-  };
+  #home.file.".ssh/id_rsa_paradigm" = {
+  #source = null; # no need to embed content directly
+  #mode = "0600"; # Correct permissions for private key
+  #};
 
   # SSH config
   home.file.".ssh/config".text = ''
