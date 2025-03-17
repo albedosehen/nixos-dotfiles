@@ -6,9 +6,12 @@
   system,
   ...
 }:
+let
+  homeDir = "/home/${user}";
+in
 {
   home.username = user;
-  home.homeDirectory = "/home/${user}";
+  home.homeDirectory = homeDir;
   home.stateVersion = "24.11";
 
   imports = [
@@ -102,7 +105,7 @@
 
     includes = [
       {
-        condition = "gitdir:~/paradigm/";
+        condition = "gitdir:${homeDir}/paradigm/";
         contents = {
           user.name = "Shon Thomas";
           user.email = "shon.thomas@myparadigm.com";
