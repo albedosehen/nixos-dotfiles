@@ -109,6 +109,7 @@ in
         contents = {
           user.name = "Shon Thomas";
           user.email = "shon.thomas@myparadigm.com";
+          credential.helper = "/mnt/c/Program\\ Files/Git/mingw64/libexec/git-core/git-credential-wincred.exe";
         };
       }
     ];
@@ -121,6 +122,7 @@ in
       diff.colorMoved = "default";
       merge.conflictStyle = "diff3";
       rebase.autoStash = true;
+      credential.helper = "/mnt/c/Program\\ Files/Git/mingw64/libexec/git-core/git-credential-wincred.exe";
     };
 
     aliases = {
