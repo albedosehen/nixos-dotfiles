@@ -5,7 +5,7 @@
     ./direnv.nix
     ./eza.nix
     ./fastfetch
-    ./git-profile.nix
+    #./git-profile.nix
     #./kitty.nix
     #./nixvim
     ./starship.nix

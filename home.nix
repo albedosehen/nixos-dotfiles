@@ -13,6 +13,7 @@
 
   imports = [
     ./modules
+    ./modules/git-profile.nix
   ];
 
   # Packages that should be installed to the user profile
