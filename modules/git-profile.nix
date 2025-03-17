@@ -6,7 +6,7 @@ let
 in
 {
   # SSH Key Generation and File Setup as Activation Script
-  sshActivationAction = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+  home.activation.scripts.sshKeySetup = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
     if [ ! -f ${sshKeyPathPersonal} ]; then
       echo "Generating SSH key for GitHub (personal)"
       ssh-keygen -t ed25519 -C "shonpt@outlook.com" -f ${sshKeyPathPersonal} -N ""
@@ -16,8 +16,6 @@ in
       ssh-keygen -t rsa -b 4096 -C "shon.thomas@myparadigm.com" -f ${sshKeyPathWork} -N ""
     fi
   '';
-
-  home.activation.scripts.sshKeySetup = sshActivationAction;
 
   # File configuration for SSH keys with correct file permissions
   #home.file.".ssh/id_ed25519_git" = {
