@@ -35,7 +35,7 @@ in
       User git
       IdentityFile ${sshKeyPathPersonal}
 
-    Host bitbucket.org-work
+    Host bitbucket.org
       HostName bitbucket.org
       User git
       IdentityFile ${sshKeyPathWork}
