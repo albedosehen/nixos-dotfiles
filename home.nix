@@ -194,4 +194,8 @@ in
     enableZshIntegration = true;
     #enableFishIntegration = true;
   };
+
+  programs.nix-ld = {
+    enable = true;
+  };
 }
