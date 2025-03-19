@@ -1,16 +1,21 @@
 # NixOS-WSL config: system packages and settings
-{ config, lib, pkgs, user, inputs, ... }:
+{
+  pkgs,
+  user,
+  inputs,
+  ...
+}:
 {
   nixpkgs.config.allowUnfree = true;
   nixpkgs.config.allowBroken = true;
-  
+
   wsl = {
     enable = true;
     defaultUser = user;
     useWindowsDriver = true;
     wslConf.boot.command = "${pkgs.zsh}/bin/zsh";
   };
-  
+
   programs.zsh.enable = true;
   users.defaultUserShell = pkgs.zsh;
 
@@ -23,16 +28,16 @@
 
   # Keep only system-wide packages here
   environment.systemPackages = with pkgs; [
-    git                # Version control system
-    curl               # Command-line tool for transferring data
-    wget               # Network downloader
+    git # Version control system
+    curl # Command-line tool for transferring data
+    wget # Network downloader
     nvtopPackages.full # NVIDIA GPU monitoring tool
-    socat              # Multipurpose relay tool (Needed for SSH agent proxy)
-    zsh                # Z shell
-    starship           # Minimalist shell prompt
-    nvd                # Nix version daemon
-    wslu               # WSL utilities
-    coreutils          # Basic file, shell, and text manipulation
+    socat # Multipurpose relay tool (Needed for SSH agent proxy)
+    zsh # Z shell
+    starship # Minimalist shell prompt
+    nvd # Nix version daemon
+    wslu # WSL utilities
+    coreutils # Basic file, shell, and text manipulation
 
   ];
 
@@ -42,14 +47,20 @@
 
   programs.nix-ld = {
     enable = true;
-    package = pkgs.nix-ld-rs;
+    #package = pkgs.nix-ld-rs;
   };
 
   nix = {
     settings = {
-      experimental-features = ["nix-command" "flakes"];
+      experimental-features = [
+        "nix-command"
+        "flakes"
+      ];
       auto-optimise-store = true;
-      trusted-users = ["root" user];
+      trusted-users = [
+        "root"
+        user
+      ];
       max-jobs = "auto";
       cores = 0;
       keep-outputs = true;
@@ -74,7 +85,7 @@
       min-free = 128000000;
       max-free = 1000000000;
     };
-    
+
     registry = {
       nixpkgs.flake = inputs.nixpkgs;
       nixpkgs-unstable.flake = inputs.nixpkgs-unstable;
@@ -86,7 +97,11 @@
 
   systemd.user.services.ssh-agent-proxy = {
     description = "Windows SSH agent proxy";
-    path = [ pkgs.wslu pkgs.coreutils pkgs.bash ];
+    path = [
+      pkgs.wslu
+      pkgs.coreutils
+      pkgs.bash
+    ];
     serviceConfig = {
       ExecStartPre = [
         "${pkgs.coreutils}/bin/mkdir -p /mnt/wsl"
@@ -94,16 +109,16 @@
       ];
       ExecStart = "${pkgs.writeShellScript "ssh-agent-proxy" ''
         set -x  # Enable debug output
-        
+
         # Get Windows username using wslvar
         WIN_USER="$("${pkgs.wslu}/bin/wslvar" USERNAME 2>/dev/null || echo $USER)"
-        
+
         # Check common npiperelay locations
         NPIPE_PATHS=(
           "/mnt/c/Users/$WIN_USER/AppData/Local/Microsoft/WinGet/Links/npiperelay.exe"
           "/mnt/c/ProgramData/chocolatey/bin/npiperelay.exe"
         )
-        
+
         NPIPE_PATH=""
         for path in "''${NPIPE_PATHS[@]}"; do
           echo "Checking npiperelay at: $path"
@@ -112,14 +127,14 @@
             break
           fi
         done
-        
+
         if [ -z "$NPIPE_PATH" ]; then
           echo "npiperelay.exe not found in expected locations!"
           exit 1
         fi
-        
+
         echo "Using npiperelay from: $NPIPE_PATH"
-        
+
         exec ${pkgs.socat}/bin/socat -d UNIX-LISTEN:/mnt/wsl/ssh-agent.sock,fork,mode=600 \
           EXEC:"$NPIPE_PATH -ei -s //./pipe/openssh-ssh-agent",nofork
       ''}";

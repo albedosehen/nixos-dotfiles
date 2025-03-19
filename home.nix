@@ -189,13 +189,9 @@ in
   };
 
   # Add nix-index configuration
-  programs.nix-index = {
-    enable = true;
-    enableZshIntegration = true;
-    #enableFishIntegration = true;
-  };
-
-  programs.nix-ld = {
-    enable = true;
-  };
+  #programs.nix-index = {
+  #enable = true;
+  #enableZshIntegration = true;
+  #enableFishIntegration = true;
+  #};
 }
