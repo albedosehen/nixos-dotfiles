@@ -68,7 +68,7 @@
       nixos-wsl,
       home-manager,
       nixvim,
-      nix-index-database.nixosModules.nix-index
+      nix-index-database,
       ...
     }@inputs:
     let
