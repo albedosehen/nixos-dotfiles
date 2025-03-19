@@ -88,8 +88,8 @@ in
     direnv # Per-directory environment variables
 
     # Add these packages for ephemeral package support
-    #nix-index # Required for , (comma) to work
-    comma # Run programs without installing
+    #nix-index # Required for , (comma) to work # use the offline database variant when using WSL for better performance / avoid crashing
+    #comma # Run programs without installing
 
     # Add nixvim
     nixvim.packages.${system}.default # Nix-based Vim setup

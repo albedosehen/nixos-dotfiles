@@ -68,6 +68,7 @@
       nixos-wsl,
       home-manager,
       nixvim,
+      nix-index-database.nixosModules.nix-index
       ...
     }@inputs:
     let
@@ -114,7 +115,11 @@
             inherit host;
             inherit nixvim;
           };
-          modules = [ ./home.nix ];
+          modules = [
+            nix-index-database.nixosModules.nix-index
+            { programs.nix-index-database.comma.enable = true; }
+            ./home.nix
+          ];
         };
       };
     };
