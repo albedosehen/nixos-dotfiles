@@ -38,17 +38,13 @@
     nvd # Nix version daemon
     wslu # WSL utilities
     coreutils # Basic file, shell, and text manipulation
-
   ];
 
   services = {
     openssh.enable = true;
   };
 
-  programs.nix-ld = {
-    enable = true;
-    #package = pkgs.nix-ld-rs;
-  };
+  programs.nix-ld.enable = true;
 
   nix = {
     settings = {
@@ -110,10 +106,7 @@
       ExecStart = "${pkgs.writeShellScript "ssh-agent-proxy" ''
         set -x  # Enable debug output
 
-        # Get Windows username using wslvar
         WIN_USER="$("${pkgs.wslu}/bin/wslvar" USERNAME 2>/dev/null || echo $USER)"
-
-        # Check common npiperelay locations
         NPIPE_PATHS=(
           "/mnt/c/Users/$WIN_USER/AppData/Local/Microsoft/WinGet/Links/npiperelay.exe"
           "/mnt/c/ProgramData/chocolatey/bin/npiperelay.exe"
@@ -149,7 +142,6 @@
 
   systemd.user.services.ssh-agent-proxy.serviceConfig.RuntimeDirectory = "ssh-agent";
 
-  # Disable the default command-not-found
   programs.command-not-found.enable = false;
 
   programs.nh = {
@@ -161,10 +153,8 @@
     flake = "/home/${user}/nixos-config";
   };
 
-  # Set default shell for your user
   users.users.${user} = {
     shell = pkgs.zsh;
     isNormalUser = true;
-    # Keep any other existing user settings
   };
 }
