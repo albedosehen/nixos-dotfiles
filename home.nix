@@ -111,9 +111,9 @@ in
       {
         condition = "gitdir:${homeDir}/paradigm/";
         contents = {
-          user.name = "Shon Thomas";
-          user.email = "shon.thomas@myparadigm.com";
-          credential.helper = "/mnt/c/Program\\ Files/Git/mingw64/libexec/git-core/git-credential-wincred.exe";
+          user.name = "Shon Thomas"; # TODO: Put in variables
+          user.email = "shon.thomas@myparadigm.com"; # TODO: Put in variables
+          #credential.helper = "/mnt/c/Program\\ Files/Git/mingw64/libexec/git-core/git-credential-wincred.exe";
         };
       }
     ];
