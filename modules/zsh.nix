@@ -63,6 +63,9 @@
       # Make sure VSCode terminal uses correct font
       export TERMINAL_FONT="JetBrainsMono Nerd Font Mono"
 
+      # Suppress direnv spam
+      export DIRENV_LOG_FORMAT="";
+
       # Nix garbage collection and update helper
       nix-cleanup() {
           nix-collect-garbage -d
