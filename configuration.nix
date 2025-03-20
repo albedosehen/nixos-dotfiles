@@ -38,6 +38,7 @@
     nvd # Nix version daemon
     wslu # WSL utilities
     coreutils # Basic file, shell, and text manipulation
+    #azure-functions-core-tools
   ];
 
   services = {

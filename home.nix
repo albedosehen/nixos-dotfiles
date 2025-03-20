@@ -77,7 +77,7 @@ in
     nh # Python script runner
     vivid # Python color output
 
-    # Add these useful tools
+    # Nix-specific tools
     comma # Run programs without installing them
     nix-output-monitor # Better nix-build output
     nixpkgs-review # Review nixpkgs pull requests
@@ -92,7 +92,11 @@ in
     #comma # Run programs without installing
 
     # Add nixvim
-    nixvim.packages.${system}.default # Nix-based Vim setup
+    nixvim.packages.${system}.default
+
+    # Azure
+    azure-cli
+    azure-functions-core-tools
   ];
 
   # Git configuration
@@ -192,6 +196,6 @@ in
   programs.nix-index = {
     enable = true;
     enableZshIntegration = true;
-  #enableFishIntegration = true;
+    #enableFishIntegration = true;
   };
 }
