@@ -116,9 +116,11 @@
 
       # cat alias...
       cat = "bat --paging=always --color=always"; # Use 'bat' as a more feature-rich replacement for 'cat'
+      c = "bat --paging=always --color=always";
 
       # Vscode alias...
       vcr = "code -r";
+      vsc = "code .";
       #   less ephemeral
       ".." = "cd ..";
       ",," = "nix run nixpkgs#";
