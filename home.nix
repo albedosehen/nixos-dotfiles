@@ -78,7 +78,7 @@ in
     vivid # Python color output
 
     # Nix-specific tools
-    comma # Run programs without installing them
+    #comma # Run programs without installing them
     nix-output-monitor # Better nix-build output
     nixpkgs-review # Review nixpkgs pull requests
     statix # Lint and suggest improvements for Nix code
