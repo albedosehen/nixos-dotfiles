@@ -76,7 +76,7 @@
 
       # Quick flake update
       nix-update() {
-          nix flake update
+          sudo nix flake update
           sudo nixos-rebuild switch --flake .#nixos
       }
 
