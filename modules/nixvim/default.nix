@@ -246,8 +246,12 @@
       lsp = {
         enable = true;
         servers = {
+          astro.enable = true;
           eslint.enable = true;
           yamlls.enable = true;
+          gopls.enable = true;
+          terraformls.enable = true;
+          ts_ls.enable = true;
           jsonls.enable = true;
           html.enable = true;
           graphql.enable = true;
@@ -261,6 +265,7 @@
               "postcss"
               "typescriptreact"
               "javascriptreact"
+              "astro"
             ];
           };
         };
