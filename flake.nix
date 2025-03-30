@@ -114,6 +114,7 @@
             inherit user;
             inherit host;
             inherit nixvim;
+            inherit system;
           };
           modules = [
             nix-index-database.hmModules.nix-index
