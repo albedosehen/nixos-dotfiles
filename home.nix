@@ -93,10 +93,6 @@ in
 
     # Add nixvim
     nixvim.packages.${system}.default
-
-    # Azure
-    azure-cli
-    azure-functions-core-tools
   ];
 
   # Git configuration
@@ -196,6 +192,5 @@ in
   programs.nix-index = {
     enable = true;
     enableZshIntegration = true;
-    #enableFishIntegration = true;
   };
 }

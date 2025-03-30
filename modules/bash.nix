@@ -1,4 +1,4 @@
-{config, pkgs, ...}:
+{ ... }:
 {
   programs.bash = {
     enable = true;
@@ -13,9 +13,9 @@
 
     shellAliases = {
       # Enhanced NH aliases...
-      nos = "nh os switch . --dry";                               # Safe preview of system changes
-      ngc = "nh clean all --keep-since 7d --keep 10";             # Clean both user and system
-      ngcd = "nh clean all --dry --keep-since 7d --keep 10";      # Clean both user and system
+      nos = "nh os switch . --dry"; # Safe preview of system changes
+      ngc = "nh clean all --keep-since 7d --keep 10"; # Clean both user and system
+      ngcd = "nh clean all --dry --keep-since 7d --keep 10"; # Clean both user and system
 
       # ls aliases...
       ll = "eza -l --icons=always --group-directories-first --git --color=always";
@@ -28,6 +28,8 @@
 
       # Vscode alias...
       vcr = "code -r";
+      vsc = "code --";
+
       #   less ephemeral
       ".." = "cd ..";
       ",," = "nix run nixpkgs#";
@@ -38,3 +40,4 @@
     };
   };
 }
+

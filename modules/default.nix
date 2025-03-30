@@ -7,7 +7,6 @@
     ./fastfetch
     #./git-profile.nix
     #./kitty.nix
-    #./nixvim
     ./starship.nix
     ./zoxide.nix
     ./zsh.nix

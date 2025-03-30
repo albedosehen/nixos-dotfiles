@@ -1,4 +1,4 @@
-{ config, lib, ... }:
+{ config, ... }:
 
 let
   sshKeyPathPersonal = "${config.home.homeDirectory}/.ssh/id_ed25519_git";
