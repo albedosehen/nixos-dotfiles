@@ -17,7 +17,6 @@ in
 
   imports = [
     ./modules
-    nix-index-database.hmModules.nix-index
   ];
 
   home.sessionVariables = {
@@ -184,8 +183,6 @@ in
     enable = true;
     enableZshIntegration = true;
   };
-
-  programs.nix-index-database.comma.enable = true;
 
   xdg = {
     enable = true;
