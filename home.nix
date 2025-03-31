@@ -3,6 +3,7 @@
   pkgs,
   user,
   nixvim,
+  nix-index-database,
   system,
   ...
 }:
@@ -16,6 +17,7 @@ in
 
   imports = [
     ./modules
+    nix-index-database.hmModules.nix-index
   ];
 
   home.sessionVariables = {
@@ -178,7 +180,13 @@ in
     git = true;
   };
 
-  # Add this section for better XDG compliance
+  programs.nix-index = {
+    enable = true;
+    enableZshIntegration = true;
+  };
+
+  programs.nix-index-database.comma.enable = true;
+
   xdg = {
     enable = true;
     configHome = "${config.home.homeDirectory}/.config";

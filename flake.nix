@@ -98,6 +98,7 @@
                 inherit host;
                 inherit nixvim;
                 inherit system;
+                inherit nix-index-database;
               };
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
@@ -115,14 +116,9 @@
             inherit host;
             inherit nixvim;
             inherit system;
+            inherit nix-index-database;
           };
           modules = [
-            nix-index-database.hmModules.nix-index
-            {
-              programs.nix-index.enable = true;
-              programs.nix-index.enableZshIntegration = true;
-              programs.nix-index-database.comma.enable = true;
-            }
             ./home.nix
           ];
         };
