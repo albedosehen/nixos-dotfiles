@@ -23,7 +23,7 @@
         "direnv"
         "history"
       ];
-      theme = "agnoster";
+      theme = "essembeh";
     };
     autosuggestion.enable = true;
     enableCompletion = true;

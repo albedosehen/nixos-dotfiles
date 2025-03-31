@@ -126,7 +126,7 @@
       character = {
         success_symbol = "[[➜](green) ❯](peach)";
         error_symbol = "[[✗](red) ❯](peach)";
-        vimcmd_symbol = "[](subtext1)"
+        # vimcmd_symbol = "[](subtext1)";
       };
 
       # Disable some modules that might slow down the prompt
@@ -136,31 +136,31 @@
 
       # Directory configuration
       directory = {
-        style = "bold lavender";
+        #        style = "bold lavender";
         truncation_length = 4;
         truncate_to_repo = true;
       };
 
       # Git configuration
       git_branch = {
-        style = "bold mauve";
+        #        style = "bold mauve";
         symbol = "🌱 ";
         truncation_length = 20;
         truncation_symbol = "...";
       };
 
       git_status = {
-        conflicted = "⚔️";
-        ahead = "🚀";
-        behind = "🐌";
-        diverged = "🔀";
-        up_to_date = "✅";
-        untracked = "🌊";
-        stashed = "📦";
-        modified = "📝";
+        conflicted = "理";
+        ahead = " ";
+        behind = "良";
+        diverged = "數";
+        up_to_date = " ";
+        untracked = " ";
+        stashed = "ﰤ ";
+        modified = " ";
         staged = "[++\\($count\\)](green)";
-        renamed = "🔄";
-        deleted = "🗑️";
+        renamed = "漏";
+        deleted = " ";
       };
 
       # Nix shell configuration
