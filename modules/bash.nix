@@ -39,6 +39,7 @@
 
       v = "nvim"; # Open nvim
       sv = "sudo nvim"; # Open nvim with sudo
+      z = "zoxide";
     };
   };
 }

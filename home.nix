@@ -18,6 +18,10 @@ in
     ./modules
   ];
 
+  home.sessionVariables = {
+    NODE_EXTRA_CA_CERTS = "/etc/ssl/certs/ca-bundle.crt";
+  };
+
   # Packages that should be installed to the user profile
   home.packages = with pkgs; [
     # Dev tools
@@ -57,6 +61,7 @@ in
     procs # Process viewer
     sd # Text replacement tool
     choose # Select options from list
+    cacert
 
     # Shell tools
     fzf # Fuzzy finder
