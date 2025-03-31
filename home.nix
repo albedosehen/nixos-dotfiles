@@ -151,7 +151,7 @@ in
       editor = "nvim";
       prompt = "enabled";
       prefer_editor_prompt = "disabled";
-      pager = "bat";
+      pager = "less";
       # aliases = {
       #
       # };
@@ -181,6 +181,4 @@ in
     dataHome = "${config.home.homeDirectory}/.local/share";
     stateHome = "${config.home.homeDirectory}/.local/state";
   };
-
-  programs.nix-index.enableZshIntegration = true;
 }

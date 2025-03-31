@@ -5,7 +5,6 @@
     enableCompletion = true;
 
     initExtra = ''
-      fastfetch
       if [ -f $HOME/.bashrc-personal ]; then
         source $HOME/.bashrc-personal
       fi
@@ -13,7 +12,10 @@
 
     shellAliases = {
       # Enhanced NH aliases...
-      nos = "nh os switch . --dry"; # Safe preview of system changes
+      nos = "ng os switch .";
+      nosd = "nh os switch . --dry";
+      noh = "ng home switch .";
+      nohd = "ng home switch . --dry";
       ngc = "nh clean all --keep-since 7d --keep 10"; # Clean both user and system
       ngcd = "nh clean all --dry --keep-since 7d --keep 10"; # Clean both user and system
 
@@ -28,7 +30,7 @@
 
       # Vscode alias...
       vcr = "code -r";
-      vsc = "code --";
+      vsc = "code";
 
       #   less ephemeral
       ".." = "cd ..";
@@ -40,4 +42,3 @@
     };
   };
 }
-
