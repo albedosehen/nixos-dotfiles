@@ -92,7 +92,11 @@
             nixos-wsl.nixosModules.default
             ./configuration.nix
             nix-index-database.nixosModules.nix-index
-            { programs.nix-index-database.comma.enable = true; }
+            {
+              programs.nix-index.enable = true;
+              programs.nix-index.enableZshIntegration = true;
+              programs.nix-index-database.comma.enable = true;
+            }
             home-manager.nixosModules.home-manager
             {
               home-manager.extraSpecialArgs = {
@@ -122,7 +126,11 @@
           };
           modules = [
             nix-index-database.hmModules.nix-index
-            { programs.nix-index-database.comma.enable = true; }
+            {
+              programs.nix-index.enable = true;
+              programs.nix-index.enableZshIntegration = true;
+              programs.nix-index-database.comma.enable = true;
+            }
             ./home.nix
           ];
         };
