@@ -1,8 +1,8 @@
 { config, ... }:
 
 let
-  sshKeyPathPersonal = "${config.home.homeDirectory}/.ssh/id_ed25519_git";
-  sshKeyPathWork = "${config.home.homeDirectory}/.ssh/id_rsa_paradigm";
+  sshKeyPathPersonal = "${config.home.homeDirectory}/.ssh/id_ed25519_git"; #FIXME: [git::sshKey] Update to your generated sshKey.
+  sshKeyPathWork = "${config.home.homeDirectory}/.ssh/id_rsa_paradigm"; #FIXME: [git::work.sshKey] Update to your generated sshKey.
 in
 {
   # SSH Key Generation and File Setup as Activation Script
@@ -29,6 +29,7 @@ in
   #};
 
   # SSH config
+  #FIXME: [git::ssh.provider] Update to your version control provider (github/bitbucket/etc..)
   home.file.".ssh/config".text = ''
     Host github.com
       HostName github.com

@@ -165,7 +165,7 @@
 
       # Nix shell configuration
       nix_shell = {
-        symbol = "❄️ ";
+        symbol = " ";
         format = "via [$symbol$state( \($name\))]($style) ";
       };
     };

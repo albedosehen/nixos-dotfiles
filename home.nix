@@ -16,7 +16,6 @@ in
 
   imports = [
     ./modules
-    ./modules/git-profile.nix
   ];
 
   # Packages that should be installed to the user profile
@@ -87,10 +86,6 @@ in
     devenv # Development environments
     direnv # Per-directory environment variables
 
-    # Add these packages for ephemeral package support
-    #nix-index # Required for , (comma) to work # use the offline database variant when using WSL for better performance / avoid crashing
-    #comma # Run programs without installing
-
     # Add nixvim
     nixvim.packages.${system}.default
   ];
@@ -98,18 +93,17 @@ in
   # Git configuration
   programs.git = {
     enable = true;
-    userName = "albedosehen"; # TODO: Change this
-    userEmail = "shonpt@outlook.com"; # TODO: Change this
+    userName = "albedosehen"; # FIXME: [git::username] Personalize to your identity
+    userEmail = "shonpt@outlook.com"; # FIXME: [git::email] Personalize to your identity
     delta.enable = true;
     lfs.enable = true;
 
     includes = [
       {
-        condition = "gitdir:${homeDir}/paradigm/";
+        condition = "gitdir:${homeDir}/paradigm/"; # FIXME: [git::work.directory] Personalize to your identity
         contents = {
-          user.name = "Shon Thomas"; # TODO: Put in variables
-          user.email = "shon.thomas@myparadigm.com"; # TODO: Put in variables
-          #credential.helper = "/mnt/c/Program\\ Files/Git/mingw64/libexec/git-core/git-credential-wincred.exe";
+          user.name = "Shon Thomas"; # FIXME: [git::work.username] Personalize to your identity
+          user.email = "shon.thomas@myparadigm.com"; # FIXME: [git::work.email] Personalize to your identity
         };
       }
     ];
@@ -121,8 +115,8 @@ in
       core.autocrlf = "input"; # For WSL
       diff.colorMoved = "default";
       merge.conflictStyle = "diff3";
-      rebase.autoStash = true;
-      credential.helper = "/mnt/c/Program\\ Files/Git/mingw64/libexec/git-core/git-credential-wincred.exe";
+      rebase.autoStash = false;
+      credential.helper = "/mnt/c/Program\\ Files/Git/mingw64/libexec/git-core/git-credential-wincred.exe"; # For WSL
     };
 
     aliases = {
@@ -145,7 +139,7 @@ in
 
       unstage = "reset HEAD --";
       last = "log -1 HEAD";
-      visual = "!gitk";
+      viz = "!gitk";
     };
   };
 
@@ -157,10 +151,10 @@ in
       editor = "nvim";
       prompt = "enabled";
       prefer_editor_prompt = "disabled";
-      pager = "bat"; # Leave blank or set "cat" to disable
-      aliases = {
-        co = "pr checkout";
-      };
+      pager = "bat";
+      # aliases = {
+      #
+      # };
     };
   };
 
@@ -188,9 +182,5 @@ in
     stateHome = "${config.home.homeDirectory}/.local/state";
   };
 
-  # Add nix-index configuration
-  programs.nix-index = {
-    enable = true;
-    enableZshIntegration = true;
-  };
+  programs.nix-index.enableZshIntegration = true;
 }
