@@ -87,6 +87,7 @@
           specialArgs = {
             inherit inputs;
             inherit user;
+            inherit host;
           };
           modules = [
             nixos-wsl.nixosModules.default

@@ -2,6 +2,7 @@
 {
   pkgs,
   user,
+  host,
   inputs,
   ...
 }:
@@ -12,8 +13,42 @@
   wsl = {
     enable = true;
     defaultUser = user;
+    docker-desktop.enable = true;
     useWindowsDriver = true;
-    wslConf.boot.command = "${pkgs.zsh}/bin/zsh";
+    wrapBinSh = true;
+
+    interop = {
+      includePath = true;
+      register = false;
+    };
+
+    usbip = {
+      enable = false;
+      autoAttach = [ ]; # busid's for auto device attachment
+      # Obtain the Windows host where Usbipd process is running.
+      snippetIpAddress = "$(ip route list | sed -nE 's/(default)? via (.*) dev eth0 .*/\\2/p' | head -n1)";
+    };
+
+    wslConf = {
+      boot = {
+        systemd = true;
+        command = "${pkgs.zsh}/bin/zsh";
+      };
+      interop = {
+        enabled = true;
+        appendWindowsPath = false;
+      };
+      user = {
+        default = user;
+      };
+      network = {
+        hostname = host;
+        generateHosts = true;
+        generateResolveConf = true;
+      };
+    };
+    startMenuLaunchers = false;
+    # tarball.configPath = "~/nixos/nixos-wsl.tarball.gz";
   };
 
   programs.zsh.enable = true;
@@ -28,16 +63,16 @@
 
   # Keep only system-wide packages here
   environment.systemPackages = with pkgs; [
-    git # Version control system
-    curl # Command-line tool for transferring data
-    wget # Network downloader
+    git
+    curl
+    wget
     nvtopPackages.full # NVIDIA GPU monitoring tool
     socat # Multipurpose relay tool (Needed for SSH agent proxy)
-    zsh # Z shell
-    starship # Minimalist shell prompt
+    zsh
+    starship
     nvd # Nix version daemon
     wslu # WSL utilities
-    coreutils # Basic file, shell, and text manipulation
+    coreutils
   ];
 
   services = {
@@ -148,7 +183,7 @@
     enable = true;
     clean = {
       enable = true;
-      extraArgs = "--keep-since 7d --keep 5";
+      extraArgs = "--keep-since 6d --keep 5";
     };
     flake = "/home/${user}/nixos-config";
   };

@@ -64,7 +64,6 @@ in
     nvd # Nix version daemon
     wslu # WSL utilities
     coreutils # Basic file, shell, and text manipulation
-    vim # NixOS comes with nano
   ];
 
   nix = {
