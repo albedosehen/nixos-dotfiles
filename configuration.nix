@@ -44,7 +44,7 @@
       network = {
         hostname = host;
         generateHosts = true;
-        generateResolveConf = true;
+        #generateResolveConf = true;
       };
     };
     startMenuLaunchers = false;
