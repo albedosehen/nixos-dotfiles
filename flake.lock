@@ -749,11 +749,11 @@
         "pre-commit-hooks": "pre-commit-hooks"
       },
       "locked": {
-        "lastModified": 1743459656,
-        "narHash": "sha256-UArL8Kgv/PX3SJB2s/SGYXViJBK5XGe/MfDvPNfSPu0=",
+        "lastModified": 1743471422,
+        "narHash": "sha256-Ce6rx223r2cQcT4IiS/VChqVbgzzuu6K251rlv6EkhE=",
         "owner": "albedosehen",
         "repo": "nixvim",
-        "rev": "2ce20d44ff7be0e95f17f4652e8583b7f623089e",
+        "rev": "d9a4755ea882f957e9dbc1afb27b84a01f56d62e",
         "type": "github"
       },
       "original": {
