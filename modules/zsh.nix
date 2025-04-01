@@ -61,10 +61,11 @@
       export LC_ALL=en_US.UTF-8
 
       # Make sure VSCode terminal uses correct font
-      export TERMINAL_FONT="JetBrainsMono Nerd Font Mono"
+      export TERMINAL_FONT="FiraCode Nerd Font Mono"
 
       # Suppress direnv spam
       export DIRENV_LOG_FORMAT="";
+      export DIRENV_LOG_LEVEL=error;
 
       # Nix garbage collection and update helper
       nix-cleanup() {
@@ -76,15 +77,15 @@
 
       # Quick flake update
       nix-update() {
-          sudo nix flake update
+          nix flake update
           sudo nixos-rebuild switch --flake .#nixos
       }
 
       # Initialize nix-index database if it doesn't exist
-      #if [ ! -f ~/.cache/nix-index/files ]; then
-      #    echo "Initializing nix-index database..."
-      #    nix-index
-      #fi
+      if [ ! -f ~/.cache/nix-index/files ]; then
+          echo "Initializing nix-index database..."
+          nix-index
+      fi
 
       # Define ,, and ,s as functions for better argument handling
       function ,,() {
@@ -123,8 +124,8 @@
       vsc = "code .";
       #   less ephemeral
       ".." = "cd ..";
-      ",," = "nix run nixpkgs#";
-      ",s" = "nix shell nixpkgs#";
+      #",," = "nix run nixpkgs#";
+      #",s" = "nix shell nixpkgs#";
 
       v = "nvim"; # Open nvim
       sv = "sudo nvim"; # Open nvim with sudo
