@@ -3,7 +3,6 @@
   pkgs,
   user,
   nixvim,
-  nix-index-database,
   system,
   ...
 }:

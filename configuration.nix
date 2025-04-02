@@ -15,11 +15,11 @@
     defaultUser = user;
     docker-desktop.enable = true;
     useWindowsDriver = true;
-    wrapBinSh = true;
+    wrapBinSh = false;
 
     interop = {
       includePath = true;
-      register = false;
+      register = true;
     };
 
     usbip = {
@@ -36,7 +36,7 @@
       };
       interop = {
         enabled = true;
-        appendWindowsPath = false;
+        appendWindowsPath = true;
       };
       user = {
         default = user;
@@ -47,7 +47,7 @@
         #generateResolveConf = true;
       };
     };
-    startMenuLaunchers = false;
+    startMenuLaunchers = true;
     # tarball.configPath = "~/nixos/nixos-wsl.tarball.gz";
   };
 
@@ -79,7 +79,10 @@
     openssh.enable = true;
   };
 
-  programs.nix-ld.enable = true;
+  programs.nix-ld = {
+    enable = true;
+    package = pkgs.nix-ld-rs;
+  };
 
   nix = {
     settings = {
