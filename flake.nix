@@ -56,7 +56,7 @@
     };
 
     alejandra.url = "github:kamadorueda/alejandra";
-    nvf.url = "github:notashelf/nvf";
+    #    nvf.url = "github:notashelf/nvf";
     nixvim.url = "github:albedosehen/nixvim";
     stylix.url = "github:danth/stylix/release-24.11";
   };
