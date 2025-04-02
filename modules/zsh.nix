@@ -45,6 +45,7 @@
       bindkey '^n' history-search-forward
       bindkey '^[w' kill-region
 
+      export COLORTERM="truecolor"
       export EZA_ICON_SPACING=2
       export EZA_ICON_TYPE="nerd"
 
