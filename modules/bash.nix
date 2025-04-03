@@ -42,10 +42,10 @@
 
     shellAliases = {
       # Enhanced NH aliases...
-      nos = "ng os switch .";
+      nos = "nh os switch .";
       nosd = "nh os switch . --dry";
-      noh = "ng home switch .";
-      nohd = "ng home switch . --dry";
+      noh = "nh home switch .";
+      nohd = "nh home switch . --dry";
       ngc = "nh clean all --keep-since 7d --keep 10"; # Clean both user and system
       ngcd = "nh clean all --dry --keep-since 7d --keep 10"; # Clean both user and system
 
@@ -62,10 +62,7 @@
       vcr = "code -r";
       vsc = "code";
 
-      #   less ephemeral
       ".." = "cd ..";
-      #",," = "nix run nixpkgs#";
-      #",s" = "nix shell nixpkgs#";
 
       v = "nvim"; # Open nvim
       sv = "sudo nvim"; # Open nvim with sudo

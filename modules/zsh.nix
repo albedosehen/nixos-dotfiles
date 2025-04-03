@@ -106,8 +106,11 @@
     ];
     shellAliases = {
       # Enhanced NH aliases...
-      nos = "nh os switch . --dry"; # Safe preview of system changes
       ngc = "nh clean all --keep-since 7d --keep 10"; # Clean both user and system
+      nos = "nh os switch .";
+      nosd = "nh os switch . --dry";
+      noh = "nh home switch .";
+      nohd = "nh home switch . --dry";
       ngcd = "nh clean all --dry --keep-since 7d --keep 10"; # Clean both user and system
 
       # ls aliases...
