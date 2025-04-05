@@ -50,6 +50,9 @@
       export EZA_ICON_TYPE="nerd"
 
       # Better integration with Nix
+      # Sources the multi-user Nix installation from the default profile 
+      # for setting NIX_PATH, NIX_SSL_CERT_FILE, and nix-managed binaries
+      # NOTE: This may not work in WSL2 if Nix is in single-user mode
       #if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
       #    . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
       #fi
@@ -83,10 +86,11 @@
       }
 
       # Initialize nix-index database if it doesn't exist
-      if [ ! -f ~/.cache/nix-index/files ]; then
-          echo "Initializing nix-index database..."
-          nix-index
-      fi
+      # NOTE: Use nix-index-database instead of nix-index
+      #if [ ! -f ~/.cache/nix-index/files ]; then
+      #    echo "Initializing nix-index database..."
+      #    nix-index
+      #fi
 
       # Define ,, and ,s as functions for better argument handling
       function ,,() {

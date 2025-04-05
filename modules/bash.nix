@@ -25,10 +25,11 @@
       }
 
       # Initialize nix-index database if it doesn't exist
-      if [ ! -f ~/.cache/nix-index/files ]; then
-          echo "Initializing nix-index database..."
-          nix-index
-      fi
+      # NOTE: Use nix-index-database instead of nix-index
+      #if [ ! -f ~/.cache/nix-index/files ]; then
+      #    echo "Initializing nix-index database..."
+      #    nix-index
+      #fi
 
       # Define ,, and ,s as functions for better argument handling
       function ,,() {
