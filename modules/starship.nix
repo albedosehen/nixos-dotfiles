@@ -144,23 +144,23 @@
       # Git configuration
       git_branch = {
         #        style = "bold mauve";
-        symbol = "";
+        symbol = "";
         truncation_length = 20;
         truncation_symbol = "";
       };
 
       git_status = {
-        conflicted = " ";
-        ahead = "異";
-        behind = "";
-        diverged = " ";
-        up_to_date = " ";
-        untracked = "ﮍ ";
-        stashed = "ﮎ ";
-        modified = " ";
-        staged = "[\\($count\\)](green) ";
-        renamed = "";
-        deleted = "";
+        conflicted = " ";
+        ahead = "";
+        behind = " ";
+        diverged = " ";
+        up_to_date = " ";
+        untracked = " ";
+        stashed = " ";
+        modified = " ";
+        staged = "[\\($count\\)](green) ";
+        renamed = " ";
+        deleted = " ";
       };
 
       # Nix shell configuration
