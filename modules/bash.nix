@@ -43,12 +43,14 @@
 
     shellAliases = {
       # Enhanced NH aliases...
-      nos = "nh os switch .";
-      nosd = "nh os switch . --dry";
+      aliases = ''alias | rg -i "${"1:-."}"'';
+      ngc = "nix-cleanup"; # Clean both user and system
+      nup = "nix-update";
+      noss = "nh os switch ."; # WSL: Open a new terminal and run wsl -t NixOS && wsl -d NixOS root exit
+      nossd = "nh os switch . --dry";
       noh = "nh home switch .";
-      nohd = "nh home switch . --dry";
-      ngc = "nh clean all --keep-since 7d --keep 10"; # Clean both user and system
-      ngcd = "nh clean all --dry --keep-since 7d --keep 10"; # Clean both user and system
+      nhsd = "nh home switch ~/nixos-config/. --dry";
+      nhs = "nh home switch ~/nixos-config/. && echo \"Reloading shell...\" && source ~/.zshrc";
 
       # ls aliases...
       ll = "eza -l --icons=always --group-directories-first --git --color=always";
@@ -57,17 +59,15 @@
       lt = "eza --tree --icons=always --group-directories-first --color=always";
 
       # cat alias...
-      cat = "bat --paging=always --color=always"; # Use 'bat' as a more feature-rich replacement for 'cat'
-
-      # Vscode alias...
-      vcr = "code -r";
-      vsc = "code";
+      cat = "bat --paging=always --color=always";
 
       ".." = "cd ..";
+      ",," = ",,";
+      ",s" = ",s";
 
-      v = "nvim"; # Open nvim
-      sv = "sudo nvim"; # Open nvim with sudo
+      v = "nvim";
       z = "zoxide";
+
     };
   };
 }

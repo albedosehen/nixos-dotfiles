@@ -2,7 +2,7 @@
 {
   programs.starship = {
     enable = true;
-    enableZshIntegration = true;
+    enableZshIntegration = false; # NOTE: Manually handle this instead to avoid profile confusion
     settings = {
       palette = "catppuccin_macchiato";
 

@@ -15,7 +15,7 @@
     defaultUser = user;
     docker-desktop.enable = true;
     useWindowsDriver = true;
-    wrapBinSh = false;
+    wrapBinSh = true;
 
     interop = {
       includePath = true;
