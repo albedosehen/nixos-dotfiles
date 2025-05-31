@@ -127,7 +127,7 @@
     };
   };
 
-  system.stateVersion = "24.11";
+  system.stateVersion = "25.05";
 
   systemd.user.services.ssh-agent-proxy = {
     description = "Windows SSH agent proxy";

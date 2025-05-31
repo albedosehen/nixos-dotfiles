@@ -50,7 +50,7 @@
         }
         {
           type = "custom";
-          format = " OS -> NixOS 24.11";
+          format = " OS -> NixOS 25.05";
         }
         {
           type = "kernel";

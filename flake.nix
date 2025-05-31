@@ -18,7 +18,7 @@
   };
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable-small";
     nixos-wsl = {
       url = "github:nix-community/NixOS-WSL/main";
@@ -30,7 +30,7 @@
     };
 
     home-manager = {
-      url = "github:nix-community/home-manager/release-24.11";
+      url = "github:nix-community/home-manager/release-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -56,9 +56,8 @@
     };
 
     alejandra.url = "github:kamadorueda/alejandra";
-    #    nvf.url = "github:notashelf/nvf";
     nixvim.url = "github:albedosehen/nixvim";
-    stylix.url = "github:danth/stylix/release-24.11";
+    stylix.url = "github:danth/stylix/release-25.05";
   };
 
   outputs =
