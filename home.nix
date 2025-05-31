@@ -46,7 +46,7 @@ in
     nerd-fonts.jetbrains-mono
     nerd-fonts.symbols-only
     nerd-fonts.noto
-    nerd-fonts.0xproto
+    nerd-fonts."0xproto"
     nerd-fonts.zed-mono
 
     # System tools
