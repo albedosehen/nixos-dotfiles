@@ -40,14 +40,10 @@ in
     difftastic # Better diff tool
     shellcheck # Shell script analyzer
     nodePackages.prettier # Code formatter
-    (nerdfonts.override {
-      fonts = [
-        "FiraCode"
-        "JetBrainsMono"
-        "NerdFontsSymbolsOnly"
-        "Noto"
-      ];
-    }) # Nerd Fonts
+    nerd-fonts.fira-code
+    nerd-fonts.jetbrains-mono
+    nerd-fonts.nerd-fonts-symbols-only
+    nerd-fonts.notos
 
     # System tools
     btop # System monitoring
