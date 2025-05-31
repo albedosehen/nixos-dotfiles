@@ -40,10 +40,14 @@ in
     difftastic # Better diff tool
     shellcheck # Shell script analyzer
     nodePackages.prettier # Code formatter
+
+    # Fonts
     nerd-fonts.fira-code
     nerd-fonts.jetbrains-mono
     nerd-fonts.symbols-only
-    nerd-fonts.notos
+    nerd-fonts.noto
+    nerd-fonts.0xproto
+    nerd-fonts.zed-mono
 
     # System tools
     btop # System monitoring
