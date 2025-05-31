@@ -42,7 +42,7 @@ in
     nodePackages.prettier # Code formatter
     nerd-fonts.fira-code
     nerd-fonts.jetbrains-mono
-    nerd-fonts.nerd-fonts-symbols-only
+    nerd-fonts.symbols-only
     nerd-fonts.notos
 
     # System tools
